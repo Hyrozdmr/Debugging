@@ -2,7 +2,8 @@ def encode(text, key):
     cipher = make_cipher(key)
 
     ciphertext_chars = []
-
+    print("Iterating over the letters in text")
+    print(cipher)
     for i in text:
         ciphered_char = chr(65 + cipher.index(i))
         ciphertext_chars.append(ciphered_char)
@@ -21,13 +22,18 @@ def decode(encrypted, key):
     return "".join(plaintext_chars)
 
 def make_cipher(key):
-    alphabet = [chr(i + 97) for i in range(1, 26)]
+    alphabet = [chr(i + 97) for i in range(0, 26)]
     cipher_with_duplicates = list(key) + alphabet
+    print("With duplicates:")
+    print(cipher_with_duplicates)
 
     cipher = []
     for i in range(0, len(cipher_with_duplicates)):
         if cipher_with_duplicates[i] not in cipher_with_duplicates[:i]:
             cipher.append(cipher_with_duplicates[i])
+
+    print("Without duplicate?")
+    print(cipher)        
 
     return cipher
 
